@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/root">
+    <title>ClearCapture ~ Login</title>
+</head>
+
+<body>
+    <div>
+        <div class="error_message_div">Incorrect username or password</div>
+        <div class="login_form">
+            <form action="/userlogin" method="post">
+                <div class="form_title">Login</div>
+                <div>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="login_password" required>
+                </div>
+
+                <div>
+                    <p>Don't have an account? <a href="#" id="create_accountBtn">Sign Up</a> here</p>
+                </div>
+                <div><input type="submit" value="Next" id="login-btn"></div>
+            </form>
+        </div>
+
+        <div class="signup_form hidden">
+            <div>
+                <div class="error_message_div"></div>
+                <form action="/userSignup" method="post">
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="signup_password" required>
+                    </div>
+
+                    <div>
+                        <p>Already have an account? <a href="/login">Log In</a></p>
+                    </div>
+                    <div>
+                        <input type="submit" value="Next" id="signup-btn">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/js/utils"></script>
+    <script>
+        getId("create_accountBtn").addEventListener("click", (e) => {
+            e.prevenDefault();
+        })
+    </script>
+</body>
+
+</html>
