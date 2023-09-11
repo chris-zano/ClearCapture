@@ -2,6 +2,7 @@ const path = require("path");
 const Profile = require("../models/Profiles");
 const User = require("../models/Users");
 const fs = require("fs");
+
 exports.authenticateUsername = (req, res) => {
     Profile.checkUsernameExists(req.params.username, req.params.password)
     .then(response => {

@@ -2,21 +2,18 @@ if (!getId("login_form").classList.contains("hidden") && getId("signup_form").cl
     console.log("true there");
     addeventlistener(getId("loginForm"), "submit", (e) => {
         e.preventDefault()
-        console.log(e.target);
         const username = getId("username").value;
         const password = getId("login_password").value;
-
-        console.log({ username: username, password: password });
 
         //authenticate username
 
         authWithUsernameANdPassword(username, password)
             .then(response => {
-                console.log(response);
                 if (response.error == true) {
                     toastErrorMessage(response.message);
                 }
                 else if (response.error == false && response.message == "success") {
+                    console.log(response);
                     const expiration_date = Date.now() + 604_800
                     const authObj = {
                         isLoggedIn: true,
@@ -25,6 +22,7 @@ if (!getId("login_form").classList.contains("hidden") && getId("signup_form").cl
                     }
                     localStorage.setItem("loginState", JSON.stringify(authObj));
                     localStorage.setItem("loginNotification", JSON.stringify({ count: 1 }));
+                    window.location.href = "/";
                 }
             })
             .catch(error => {
