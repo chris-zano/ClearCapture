@@ -22,16 +22,25 @@ async function getUserProfile(id) {
  * @param {CallableFunction} callback 
  */
 function addeventlistener(element, event, callback) {
-    return element.addEventListener(event, callback)
+   element.addEventListener(event, callback)
 }
 
 /**
  * simplifies document.getElementById
  * @param {HTMLElement.id} id 
- * @returns {HTMLElement | null}
+ * @returns {HTMLElement | undefined}
  */
 function getId(id) {
     return document.getElementById(id);
+}
+
+/**
+ * 
+ * @param {HTMLElement.className} classname 
+ * @returns {HTMLElement | undefined}
+ */
+function getClass(classname) {
+    return document.getElementsByClassName(classname);
 }
 
 /**

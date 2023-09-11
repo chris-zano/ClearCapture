@@ -1,11 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClearCapture/title>
+    <link rel="shortcut icon" href="/admin/image/favicon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="/css/root">
+    <title>ClearCapture</title>
 </head>
+
 <body>
-    
+    <div class="profile_item" id="default">
+        <form action="#" id="firstname_form">
+            <div>
+                <label for="firstname">*First name</label>
+                <input type="text" name="firstname" id="firstname" required>
+            </div>
+
+            <div>
+                <label for="lastname">*Last name</label>
+                <input type="text" name="lastname" id="lastname" required>
+            </div>
+
+            <div>
+                <input type="submit" value="Next" id="next-btn">
+            </div>
+        </form>
+    </div>
+
+    <div class="profile_item" id="dobgender">
+        <form action="#" id="genderDob">
+            <fieldset>
+                <legend>Gender</legend>
+
+                <div class="gender_div">
+                    <input type="radio" name="gender" id="male" value="male" required>
+                    <label for="male">Male</label>
+                </div>
+
+                <div class="gender_div">
+                    <input type="radio" name="gender" id="female" value="female" required>
+                    <label for="female">Female</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Date of Birth</legend>
+                <label for="dob">DOB</label>
+                <input type="date" name="dob" id="dob">
+            </fieldset>
+
+            <input type="submit" value="Next" id="next-btn">
+        </form>
+    </div>
+
+    <div class="profile_item" id="defusernmae">
+        <form action="#" id="usernameForm">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+
+            <div>
+                <input type="submit" value="Next" id="next-btn">
+            </div>
+        </form>
+    </div>
+
+    <div class="profile_item" id="pictureprof">
+        <form action="/admin/update/ppic" method="post" enctype="multipart/form-data" id="profilePic_form">
+            <div class="form_title">Add a Profile Picture</div>
+            <div class="default_image_div">
+                <img src="/admin/image/favicon.jpg" alt="default_image" width="100px" height="100px"
+                    class="default_image">
+            </div>
+            <div>
+                <input type="file" name="ppic" id="ppic" accept="image/jpeg, image/jpg, image/png, image/gif" required>
+            </div>
+
+            <input type="hidden" name="userId" id="profilePic_userId">
+
+            <input type="submit" value="Next" id="next-btn">
+        </form>
+
+    </div>
+
+    <script src="/js/utils"></script>
+    <script src="/js/updateAccount"></script>
 </body>
+
 </html>

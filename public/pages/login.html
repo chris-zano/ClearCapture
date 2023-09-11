@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/admin/image/favicon.jpg" type="image/x-icon">
     <link rel="stylesheet" href="/css/root">
     <title>ClearCapture ~ Login</title>
 </head>
 
 <body>
     <div>
-        <div class="error_message_div">Incorrect username or password</div>
-        <div class="login_form">
-            <form action="/userlogin" method="post">
+        <div class="error_message_div hidden" id="error_message_div">Incorrect username or password</div>
+        <div class="login_form" id="login_form">
+            <form action="#" id="loginForm">
                 <div class="form_title">Login</div>
                 <div>
                     <label for="username">Username</label>
@@ -31,10 +32,10 @@
             </form>
         </div>
 
-        <div class="signup_form hidden">
+        <div class="signup_form hidden" id="signup_form">
             <div>
                 <div class="error_message_div"></div>
-                <form action="/userSignup" method="post">
+                <form action="#" id="signupForm">
                     <div>
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email" required>
@@ -46,7 +47,7 @@
                     </div>
 
                     <div>
-                        <p>Already have an account? <a href="/login">Log In</a></p>
+                        <p>Already have an account? <a href="#" id="login_accountBtn">Log In</a></p>
                     </div>
                     <div>
                         <input type="submit" value="Next" id="signup-btn">
@@ -58,9 +59,17 @@
     <script src="/js/utils"></script>
     <script>
         getId("create_accountBtn").addEventListener("click", (e) => {
-            e.prevenDefault();
+            // e.target.prevenDefault();
+            getId("signup_form").classList.remove("hidden");
+            getId("login_form").classList.add("hidden");
+        })
+        getId("login_accountBtn").addEventListener("click", (e) => {
+            // e.target.prevenDefault();
+            getId("login_form").classList.remove("hidden");
+            getId("signup_form").classList.add("hidden");
         })
     </script>
+    <script src="/js/loginModule"></script>
 </body>
 
 </html>

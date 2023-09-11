@@ -42,9 +42,8 @@ class Profile {
             username: '',
             gender: '',
             dob: '',
-            followers: 0,
-            following: 0,
-            profilePicUrl: ''
+            profilePicUrl: '',
+            
         }
 
         return new Promise((resolve, reject) => {

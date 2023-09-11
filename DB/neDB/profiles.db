@@ -1,0 +1,5 @@
+{"_id":"k4pYsRJY4OgCIYuZ","lastname":"","firstname":"","username":"","gender":"","dob":"","profilePicUrl":"","createdAt":{"$$date":1694434721004},"updatedAt":{"$$date":1694434721004}}
+{"_id":"k4pYsRJY4OgCIYuZ","lastname":"Solomon","firstname":"Christian","username":"","gender":"","dob":"","profilePicUrl":"","createdAt":{"$$date":1694434721004},"updatedAt":{"$$date":1694435330636}}
+{"_id":"k4pYsRJY4OgCIYuZ","lastname":"Solomon","firstname":"Christian","username":"","gender":"male","dob":"2023-09-11","profilePicUrl":"","createdAt":{"$$date":1694434721004},"updatedAt":{"$$date":1694435352271}}
+{"_id":"k4pYsRJY4OgCIYuZ","lastname":"Solomon","firstname":"Christian","username":"developer","gender":"male","dob":"2023-09-11","profilePicUrl":"","createdAt":{"$$date":1694434721004},"updatedAt":{"$$date":1694435369978}}
+{"_id":"k4pYsRJY4OgCIYuZ","lastname":"Solomon","firstname":"Christian","username":"developer","gender":"male","dob":"2023-09-11","profilePicUrl":"/image/profile/b852750616e8e76bb6dc73bc34538439","createdAt":{"$$date":1694434721004},"updatedAt":{"$$date":1694435390048}}

@@ -1,0 +1,39 @@
+    "Ransomware: Evolution, Mitigation, and Prevention" by Bhardwaj, S., et al. (2017)
+
+    "Ransomware: A Comprehensive Review" by Scaife, N., et al. (2016)
+
+    "Anatomy of a Ransomware Attack" by McAfee Labs
+
+    "The Rise of Ransomware" by Verizon (Verizon's Data Breach Investigations Report)
+
+    "Ransomware: Past, Present, and Future" by Europol (European Cybercrime Centre)
+
+    "Ransomware: Hostage Rescue Manual" by Cyber Threat Alliance
+
+    "Ransomware Attacks: Detection, Prevention, and Cure" by Hussain, S., et al. (2017)
+
+    "Ransomware: A Research and Investigation into the Current and Future State of Ransomware" by Bromium, Inc.
+
+    "Ransomware Recovery: Don't Pay the Ransom!" by FBI Cyber Division (Federal Bureau of Investigation)
+
+    "Understanding Ransomware and Strategies to Defeat It" by Sophos
+
+    "Ransomware Payment Analysis" by Coveware (Annual Ransomware Marketplace Report)
+
+    "Bitcoin Ransomware: An Emerging Threat" by Conti, M., et al. (2018)
+
+    "Ransomware Attacks and Mitigation Strategies: Lessons from WannaCry and NotPetya" by Kumar, N., et al. (2018)
+
+    "Ransomware: A Brief History and How to Stay Safe" by Norton (Norton's Ransomware Resource Center)
+
+    "The Ethics of Paying Ransomware Attackers" by Bright, P. (Ars Technica)
+
+    "Ransomware Payment Bitcoin Valuation" by Chainalysis (Crypto Crime Report)
+
+    "Legal Implications of Ransomware Payments" by American Bar Association
+
+    "Ransomware: A Growing Menace" by U.S. Department of Homeland Security (DHS)
+
+    "Ransomware Trends and Predictions" by Cybersecurity and Infrastructure Security Agency (CISA)
+
+    "The Future of Ransomware: What's Next?" by Cybersecurity Insiders (Annual Cyberthreat Defense Report)
