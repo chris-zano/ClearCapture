@@ -21,6 +21,9 @@
         <form action="/admin/collection/upload" method="post" id="upload_photos_form" enctype="multipart/form-data">
             <h1>Create a new collection</h1>
             <div>
+                <input type="hidden" name="creatorId" id="creatorId">
+            </div>
+            <div>
                 <label for="collection">Upload photos</label>
                 <input type="file" name="photos" id="collection" multiple>
 

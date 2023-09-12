@@ -20,6 +20,7 @@ function main() {
         }
         else {
             e.preventDefault();
+            setattribute(getId("creatorId"), "value", JSON.parse(getLocalStorage("loginState")).userId);
             const formData = new FormData(getId("upload_photos_form"))
 
             try {
@@ -29,7 +30,7 @@ function main() {
                 });
 
                 const data = await response.json();
-                console.log(data.message);
+                console.log(data);
                 
             } catch (error) {
                 console.error(error);
