@@ -16,7 +16,7 @@ async function getUserProfile(id) {
 }
 
 /**
- * 
+ * simplification of element.addEventListener()
  * @param {HTMLElement} element 
  * @param {HTMLElementEventMap} event 
  * @param {CallableFunction} callback 

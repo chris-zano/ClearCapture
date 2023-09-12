@@ -8,17 +8,32 @@
     <link rel="stylesheet" href="/css/root">
     <title>ClearCapture</title>
 </head>
-<body>    
-    <a href="/">Home</a>
-    <a href="/admin/redirect/profile">Profile</a>
-    <a href="/admin/redirect/createUserProfile">Edit Profile</a>
-    <button type="button" id="logoutBtn">Logout</button>
 
-    My profile
+<body>
+    <header>
+        <a href="/">Home</a>
+        <a href="/admin/redirect/profile">Profile</a>
+        <a href="/admin/redirect/createUserProfile">Edit Profile</a>
+        <button type="button" id="logoutBtn">Logout</button>
+    </header>
+
+    <main>
+        <form action="/admin/collection/upload" method="post" id="upload_photos_form" enctype="multipart/form-data">
+            <h1>Create a new collection</h1>
+            <div>
+                <label for="collection">Upload photos</label>
+                <input type="file" name="photos" id="collection" multiple>
+
+                <input type="submit" value="Upload">
+            </div>
+        </form>
+    </main>
 
 
     <script src="/js/utils"></script>
     <script src="/js/signinAuth"></script>
-
+    <script src="/js/profileModule"></script>
+    
 </body>
+
 </html>
