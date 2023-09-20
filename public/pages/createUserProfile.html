@@ -5,123 +5,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/root">
-    <link rel="stylesheet" href="/css/header">
-    <title>Profile - John Doe</title>
+    <link rel="stylesheet" href="/css/createUserprofile">
+    <title>Edit Profile</title>
 </head>
 
 <body>
-    <header class="header_wrapper">
-        <nav class="main_navigation">
-            <div class="current_user" id="user-1">
-                <div class="current_user-image">
-                    <img src="#" alt="current_user-image" width="40px" height="40px">
-                </div>
-                <div class="current_user-name">
-                    <h2>John Doe</h2>
-                </div>
-                <div class="current_user-display_arrow"><small>^</small></div>
-                <div class=" hidden" id="logout-action">
-                    <button type="button" id="logoutBtn">Logout</button>
-                </div>
-            </div>
-            <script>
-                document.getElementById("user-1").addEventListener("click", (e) => {
-                    if(!document.getElementById("logout-action").classList.contains("logout-action") && document.getElementById("logout-action").classList.contains("hidden")) {
-                        document.getElementById("logout-action").classList.remove("hidden");
-                        document.getElementById("logout-action").classList.add("logout-action")
-                    }
-                    else {
-                        document.getElementById("logout-action").classList.remove("logout-action")
-                        document.getElementById("logout-action").classList.add("hidden");
-                    }
-                })
-            </script>
-            <div class="nav-humburger hidden">=</div>
-            <div class="nav_global_header">
-                <ul>
-                    <li><a href="/">Explore</a></li>
-                    <li><a href="/admin/redirect/about">About</a></li>
-                    <li><a href="/admin/redirect/contact">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
+    <header>
+        <div class="nav"><a href="javascript:history.back()">Back</a></div>
+
     </header>
-    <a href="javascript:history.back()">Back</a>
-
-    <div class="profile_item" id="default">
-        <form action="#" id="firstname_form">
-            <div>
-                <label for="firstname">*First name</label>
-                <input type="text" name="firstname" id="firstname" required>
-            </div>
-
-            <div>
-                <label for="lastname">*Last name</label>
-                <input type="text" name="lastname" id="lastname" required>
-            </div>
-
-            <div>
-                <input type="submit" value="Next" id="next-btn">
-            </div>
-        </form>
-    </div>
-
-    <div class="profile_item" id="dobgender">
-        <form action="#" id="genderDob">
-            <fieldset>
-                <legend>Gender</legend>
-
-                <div class="gender_div">
-                    <input type="radio" name="gender" id="male" value="male" required>
-                    <label for="male">Male</label>
+    <main class="container_main">
+        <div class="profile_item" id="default">
+            <form action="#" id="firstname_form">
+                <div class="form_title">Edit Profile</div>
+                <div class="form_sub_title">NAME</div>
+                <div>
+                    <label for="firstname">*First name</label>
+                    <input type="text" name="firstname" id="firstname" required>
                 </div>
 
-                <div class="gender_div">
-                    <input type="radio" name="gender" id="female" value="female" required>
-                    <label for="female">Female</label>
+                <div>
+                    <label for="lastname">*Last name</label>
+                    <input type="text" name="lastname" id="lastname" required>
                 </div>
-            </fieldset>
 
-            <fieldset>
-                <legend>Date of Birth</legend>
-                <label for="dob">DOB</label>
-                <input type="date" name="dob" id="dob">
-            </fieldset>
+                <div>
+                    <input type="submit" value="Next" id="next-btn">
+                </div>
+            </form>
+        </div>
 
-            <input type="submit" value="Next" id="next-btn">
-        </form>
-    </div>
+        <div class="profile_item" id="dobgender">
+            <form action="#" id="genderDob">
+                <div class="form_title">Edit Profile</div>
+                <div class="form_sub_title">Gender and DOB</div>
+                <fieldset>
+                    <legend>Gender</legend>
 
-    <div class="profile_item" id="defusernmae">
-        <form action="#" id="usernameForm">
-            <div>
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" required>
-            </div>
+                    <div class="gender_div">
+                        <input type="radio" name="gender" id="male" value="male" required>
+                        <label for="male">Male</label>
+                    </div>
 
-            <div>
+                    <div class="gender_div">
+                        <input type="radio" name="gender" id="female" value="female" required>
+                        <label for="female">Female</label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Date of Birth</legend>
+                    <label for="dob">DOB</label>
+                    <input type="date" name="dob" id="dob">
+                </fieldset>
+
                 <input type="submit" value="Next" id="next-btn">
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
 
-    <div class="profile_item" id="pictureprof">
-        <form action="/admin/update/ppic" method="post" enctype="multipart/form-data" id="profilePic_form">
-            <div class="form_title">Add a Profile Picture</div>
-            <div class="default_image_div">
-                <img src="/admin/image/favicon.jpg" alt="default_image" width="100px" height="100px"
-                    class="default_image">
-            </div>
-            <div>
-                <input type="file" name="ppic" id="ppic" accept="image/jpeg, image/jpg, image/png, image/gif" required>
-            </div>
+        <div class="profile_item" id="defusernmae">
+            <form action="#" id="usernameForm">
+                <div class="form_title">Edit Profile</div>
+                <div class="form_sub_title">Create a Username</div>
+                <div>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
 
-            <input type="hidden" name="userId" id="profilePic_userId">
+                <div>
+                    <input type="submit" value="Next" id="next-btn">
+                </div>
+            </form>
+        </div>
 
-            <input type="submit" value="Next" id="next-btn">
-        </form>
+        <div class="profile_item" id="pictureprof">
+            <form action="/admin/update/ppic" method="post" enctype="multipart/form-data" id="profilePic_form">
+                <div class="form_title">Edit Profile</div>
+                <div class="form_sub_title">Add a Profile Picture</div>
+                <div class="default_image_div">
+                    <img src="/admin/image/favicon.jpg" alt="default_image" width="100px" height="100px"
+                        class="default_image">
+                </div>
+                <div>
+                    <input type="file" name="ppic" id="ppic" accept="image/jpeg, image/jpg, image/png, image/gif"
+                        required>
+                </div>
 
-    </div>
+                <input type="hidden" name="userId" id="profilePic_userId">
+
+                <input type="submit" value="Next" id="next-btn">
+            </form>
+
+        </div>
+    </main>
 
     <script src="/js/utils"></script>
     <script src="/js/updateAccount"></script>

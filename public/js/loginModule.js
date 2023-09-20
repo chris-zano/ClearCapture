@@ -58,7 +58,8 @@ addeventlistener(getId("signupForm"), "submit", (e) => {
                 }
             })
             .catch(error => {
-                toastErrorMessage(error.message);
+                toastErrorMessage("There was an error while creating your account!");
+                throw new Error(error);
             })
     }
 
