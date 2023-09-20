@@ -1,0 +1,98 @@
+.container_main {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_form, .signup_form {
+    background-color: #fdffff;
+    box-shadow: 0px 3px 30px #a6a7a798;
+    width: 40vw;
+    height: 350px;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.form_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 30px;
+    color: rgb(13, 198, 87);
+}
+
+form {
+    height: 100%;
+    display: grid;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+form div {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+div input {
+    border-bottom: 1px solid #111;
+    border-radius: 3px;
+    height: 30px;
+    min-width: 150px;
+    text-indent: 10px;
+    font-size: 13px;
+}
+
+#login_accountBtn , #create_accountBtn{
+    color: #ef14ef;
+}
+
+#login_accountBtn:hover , #create_accountBtn:hover {
+    color: #009b9b;
+}
+
+input[type="submit"] {
+    border: 1px solid transparent;
+    background-color: #009b9b;
+    color: #fff;
+    font-size: 16px;
+}
+
+.error_message_div {
+    background-color: #fff;
+    box-shadow: 0px 3px 30px #a6a7a798;
+    position: fixed;
+    top: 10%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all ease-in-out 300ms;
+    height: 50px;
+    border-radius: 10px;
+}
+
+@media (min-width: 1024px) {
+    .login_form, .signup_form {
+        width: 400px;
+    }
+}
+@media (max-width: 768px) {
+    .login_form, .signup_form {
+        width: 90vw;
+    }
+
+    label {
+        font-weight: 400;
+        font-size: 14px;
+    }
+}

@@ -54,7 +54,7 @@ addeventlistener(getId("signupForm"), "submit", (e) => {
                    window.location.href = "/admin/redirect/createUserProfile";
                 }
                 else {
-                    toastErrorMessage(response.message);
+                    toastErrorMessage("Email already in use");
                 }
             })
             .catch(error => {

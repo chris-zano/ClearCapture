@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/admin/image/favicon.jpg" type="image/x-icon">
     <link rel="stylesheet" href="/css/root">
+    <link rel="stylesheet" href="/css/loginModule">
+    <link rel="shortcut icon" href="/admin/image/favicon.jpg" type="image/x-icon">
     <title>ClearCapture ~ Login</title>
 </head>
 
 <body>
-    <div>
+    <div class="container_main">
         <div class="error_message_div hidden" id="error_message_div">Incorrect username or password</div>
         <div class="login_form" id="login_form">
             <form action="#" id="loginForm">
@@ -33,27 +34,25 @@
         </div>
 
         <div class="signup_form hidden" id="signup_form">
-            <div>
-                <div class="error_message_div"></div>
-                <form action="#" id="signupForm">
-                    <div>
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" required>
-                    </div>
+            <form action="#" id="signupForm">
+                <div class="form_title">Join Us</div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
 
-                    <div>
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="signup_password" required>
-                    </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="signup_password" required>
+                </div>
 
-                    <div>
-                        <p>Already have an account? <a href="#" id="login_accountBtn">Log In</a></p>
-                    </div>
-                    <div>
-                        <input type="submit" value="Next" id="signup-btn">
-                    </div>
-                </form>
-            </div>
+                <div>
+                    <p>Already have an account? <a href="#" id="login_accountBtn">Log In</a></p>
+                </div>
+                <div>
+                    <input type="submit" value="Next" id="signup-btn">
+                </div>
+            </form>
         </div>
     </div>
     <script src="/js/utils"></script>

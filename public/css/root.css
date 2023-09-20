@@ -12,18 +12,6 @@
 
 }
 
-@font-face {
-    font-family: robotoRegular;
-    src: url('/font/roboReg.ttf');
-}
-
-ul,
-ol,
-li {
-    list-style: none;
-}
-
-
 * {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
@@ -34,11 +22,30 @@ li {
     user-select: none;
 }
 
-* {
-    outline: none !important;
-    font-family: robotoRegular;
+@font-face {
+    font-family: ccroboto-regular;
+    src: url(/font/robotoRegular.ttf);
 }
 
-*.hidden {
+.hidden {
     display: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: ccroboto-Regular;
+    font-weight: unset;
+    font-size: 14px;
+    color: #141414;
+    text-decoration: none;
+    list-style: none;
+    background-color: unset;
+    border: unset;
+    outline: unset;
 }
