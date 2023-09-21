@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const FilesCollection = require("../models/Collection");
+const Profile = require("../models/Profiles");
 
 exports.uploadCollection = (req, res) => {
     const mediaFiles = [];
@@ -26,3 +27,11 @@ exports.uploadCollection = (req, res) => {
     }
 }
 
+exports.getAllCreators = (req, res) => {
+    Profile.getAllCreators()
+    .then(response => {
+        if(response.error == false) {
+            res.status(200).json({document: response.document})
+        }
+    })
+}

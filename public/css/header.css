@@ -15,7 +15,7 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: ccroboto-Regular;
+    font-family: ccroboto-Regular, "Lucida Sans Mono", sans-serif;
     font-weight: unset;
     font-size: 14px;
     color: #141414;
@@ -68,6 +68,10 @@ header .logout-action {
 .logout-action button:hover {
     background-color: #f4efef;
     color: #141414;
+}
+
+#profileBtn {
+    width: 100%;
 }
 
 @media (min-width: 630px) {

@@ -7,18 +7,18 @@
     <link rel="stylesheet" href="/css/root">
     <link rel="stylesheet" href="/css/header">
     <link rel="stylesheet" href="/css/profile">
-    <title>Profile - John Doe</title>
+    <title id="title-header">Profile - </title>
 </head>
 
 <body>
-    <header class="header_wrapper">
+    <header class="header_wrapper" id="">
         <nav class="main_navigation">
             <div class="current_user" id="user-1">
                 <div class="current_user-image">
-                    <img src="#" alt="current_user-image" width="40px" height="40px">
+                    <img src="#" alt="current_user-image" width="40px" height="40px" id="current_user-image">
                 </div>
                 <div class="current_user-name">
-                    <h2>John Doe</h2>
+                    <h2 id="current_user-name"></h2>
                 </div>
                 <div class="current_user-display_arrow"><small>^</small></div>
                 <div class=" hidden" id="logout-action">
@@ -54,14 +54,14 @@
             <section class="layer-1">
                 <div class="layer-1_banner-image"><img
                         src="#" alt="banner image"
-                        width="100%" height="100%"></div>
+                        width="100%" height="100%" id="banner-image"></div>
                 <div class="layer1-1_user-profile">
                     <div class="layer-1_user-profile-img"><img
-                            src="#" alt="creator profile picture">
+                            src="#" alt="creator profile picture" id="user-profile-img">
                     </div>
                     <div class="layer-1_user-info">
                         <div class="creator-name">
-                            <h2>Jeremy Oystein</h2>
+                            <h2 id="creator-name">Jeremy Oystein</h2>
                         </div>
                         <div class="creator-agency">
                             <small>Photographer at Galaxy Multimedia</small>
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <div class="layer-1_message-user">
-                        <button type="button">Message</button>
+                        <button type="button" id="edit-profile">Edit Profile</button>
                     </div>
                 </div>
 
@@ -187,6 +187,9 @@
             </section>
         </div>
     </main>
+    <script src="/js/utils"></script>
+    <script src="/js/signinAuth"></script>
+    <script src="/js/profileModule"></script>
 </body>
 
 </html>

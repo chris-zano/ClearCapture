@@ -18,46 +18,45 @@
         <div class="profile_item" id="default">
             <form action="#" id="firstname_form">
                 <div class="form_title">Edit Profile</div>
-                <div class="form_sub_title">NAME</div>
-                <div>
+                <div class="form_div">
                     <label for="firstname">*First name</label>
                     <input type="text" name="firstname" id="firstname" required>
                 </div>
 
-                <div>
+                <div class="form_div">
                     <label for="lastname">*Last name</label>
                     <input type="text" name="lastname" id="lastname" required>
                 </div>
 
-                <div>
+                <div class="form_div">
                     <input type="submit" value="Next" id="next-btn">
                 </div>
             </form>
         </div>
 
-        <div class="profile_item" id="dobgender">
+        <div class="profile_item _gd" id="dobgender">
             <form action="#" id="genderDob">
                 <div class="form_title">Edit Profile</div>
-                <div class="form_sub_title">Gender and DOB</div>
-                <fieldset>
-                    <legend>Gender</legend>
-
+                <div class="gendiv">
+                    <div class="gendertitle">Gender</div>
                     <div class="gender_div">
-                        <input type="radio" name="gender" id="male" value="male" required>
-                        <label for="male">Male</label>
+                        <div>
+                            <input type="radio" name="gender" id="male" value="male" required>
+                            <label for="male">Male</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="gender" id="female" value="female" required>
+                            <label for="female">Female</label>
+                        </div>
                     </div>
-
+                </div>
+                <div class="gendiv">
+                    <div class="dobtitle">Date of Birth</div>
                     <div class="gender_div">
-                        <input type="radio" name="gender" id="female" value="female" required>
-                        <label for="female">Female</label>
+                        <label for="dob">DOB</label>
+                        <input type="date" name="dob" id="dob">
                     </div>
-                </fieldset>
-
-                <fieldset>
-                    <legend>Date of Birth</legend>
-                    <label for="dob">DOB</label>
-                    <input type="date" name="dob" id="dob">
-                </fieldset>
+                </div>
 
                 <input type="submit" value="Next" id="next-btn">
             </form>
@@ -66,13 +65,12 @@
         <div class="profile_item" id="defusernmae">
             <form action="#" id="usernameForm">
                 <div class="form_title">Edit Profile</div>
-                <div class="form_sub_title">Create a Username</div>
-                <div>
+                <div class="form_div">
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username" required>
                 </div>
 
-                <div>
+                <div class="form_div">
                     <input type="submit" value="Next" id="next-btn">
                 </div>
             </form>
@@ -81,12 +79,11 @@
         <div class="profile_item" id="pictureprof">
             <form action="/admin/update/ppic" method="post" enctype="multipart/form-data" id="profilePic_form">
                 <div class="form_title">Edit Profile</div>
-                <div class="form_sub_title">Add a Profile Picture</div>
-                <div class="default_image_div">
+                <div class="default_image_div" class="form_div">
                     <img src="/admin/image/favicon.jpg" alt="default_image" width="100px" height="100px"
                         class="default_image">
                 </div>
-                <div>
+                <div class="form_div">
                     <input type="file" name="ppic" id="ppic" accept="image/jpeg, image/jpg, image/png, image/gif"
                         required>
                 </div>

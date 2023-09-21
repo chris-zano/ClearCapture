@@ -10,6 +10,10 @@ exports.renderPageView = (req, res) => {
     fs.createReadStream(path.join(__dirname, "../public/pages", `${req.params.filename}.html`)).pipe(res);
 }
 
+exports.renderProfileage = (req, res) => {
+    fs.createReadStream(path.join(__dirname, "../public/pages/view-profile.html")).pipe(res);
+}
+
 exports.loadStyleScript = (req, res) => {
     fs.createReadStream(path.join(__dirname, "../public/css", `${req.params.filename}.css`)).pipe(res);
 }
@@ -31,5 +35,5 @@ exports.renderVectorGraphics = (req, res) => {
 }
 
 exports.renderUserProfilePicture = (req, res) => {
-    fs.createReadStream(path.join(__dirname, "../DB/userProfilePictures/", req.params.filename)).pipe(res);   
+    fs.createReadStream(path.join(__dirname, "../DB/profile_images/", req.params.filename)).pipe(res);   
 }

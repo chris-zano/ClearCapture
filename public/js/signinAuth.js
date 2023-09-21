@@ -11,7 +11,7 @@ function main() {
  * for restricted data, or app usage
  */
 function checkLoginState() {
-     //fetch login state from local storage
+    //fetch login state from local storage
     const loginState = getLocalStorage("loginState");
 
     if (!loginState) {
@@ -57,25 +57,25 @@ function checkLoginState() {
     }
 
     //add listener to the logout button
-     try {
-         const logoutBtn = document.getElementById("logoutBtn");
-         logoutBtn.addEventListener("click", () => {
-             listenOnLogout(JSON.parse(loginState).userId)
-                 .then(response => {
-                     if (response.error == false && response.message == "User Logged Out Successfully") {
+    try {
+        const logoutBtn = document.getElementById("logoutBtn");
+        logoutBtn.addEventListener("click", () => {
+            listenOnLogout(JSON.parse(loginState).userId)
+                .then(response => {
+                    if (response.error == false && response.message == "User Logged Out Successfully") {
 
-                         localStorage.removeItem("loginState");
-                         localStorage.setItem("loginNotification", JSON.stringify({ count: 1 }));
-                         alert("Session Expired. Please Login again to continue");
-                         window.location.href = "/admin/redirect/login";
-                     }
-                 })
-         })
-     } catch (error) {
-         console.log(error);
-     }
+                        localStorage.removeItem("loginState");
+                        localStorage.setItem("loginNotification", JSON.stringify({ count: 1 }));
+                        alert("Session Expired. Please Login again to continue");
+                        window.location.href = "/admin/redirect/login";
+                    }
+                })
+        })
+    } catch (error) {
+        console.log(error);
+    }
 
-     //add listener to the profile button
+    //add listener to the profile button
     //  try {
     //      const profileBtn = document.getElementById("profileBtn");
     //      profileBtn.addEventListener("click", () => {
@@ -93,13 +93,13 @@ function checkLoginState() {
     //  }
 }
 
- async function listenOnLogout(id) {
-     try {
-         const req = await fetch(`/userLogout/${id}`);
-         const res = await req.json();
+async function listenOnLogout(id) {
+    try {
+        const req = await fetch(`/userLogout/${id}`);
+        const res = await req.json();
 
-         return (res);
-     } catch (error) {
-         console.error(error);
-     }
- }
+        return (res);
+    } catch (error) {
+        console.error(error);
+    }
+}

@@ -117,7 +117,7 @@ exports.userUpdateProfilePic = (req, res) => {
     Profile.updatePictureUrl(req.body.userId, `/image/profile/${req.file.filename}`)
     .then(response => {
         if (response.error == false && response.msg == "success") {
-            fs.createReadStream(path.join(__dirname, "../public/pages/profile.html")).pipe(res);
+            fs.createReadStream(path.join(__dirname, "../public/index.html")).pipe(res);
         }
         else {
             // res.status(201).json({error: response.msg})
@@ -126,5 +126,18 @@ exports.userUpdateProfilePic = (req, res) => {
     })
     .catch(error => {
         res.status(500).json({error: error})
+    })
+}
+
+
+exports.getUserById = (req, res) => {
+    Profile.getUserProfileById(req.params.userId)
+    .then(response => {
+        if (response.message ="data retreived successfully") {
+            res.status(200).json({document: response.document[0]});
+        }
+    })
+    .catch(error => {
+        res.status(201).json({message: "No data matching this Id"})
     })
 }

@@ -48,6 +48,7 @@ addeventlistener(getId("signupForm"), "submit", (e) => {
                         userId: response.userId,
                         expiration: expiration_date
                     };
+                    localStorage.clear()
                     localStorage.setItem("loginState", JSON.stringify(authObj));
                     localStorage.setItem("loginNotification", JSON.stringify({ count: 1 }));
 

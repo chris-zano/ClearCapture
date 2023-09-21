@@ -319,6 +319,11 @@ class Profile {
         })
     }
 
+    /**
+     * fetches a user's profile picture
+     * @param {string} id the user id as a string
+     * @returns the user profile pic route
+     */
     static getUserProfilePicture(id) {
         return new Promise((resolve, reject) => {
             db.find(
@@ -332,6 +337,18 @@ class Profile {
         })
     }
 
+    /**
+     * 
+     * @returns fetches all creators
+     */
+    static getAllCreators() {
+        return new Promise((resolve, reject) => {
+            db.find({}, (err, doc) => {
+                if (err) reject({error:true, message: err})
+                resolve({error:false, document:doc})
+            })
+        })
+    }
 }
 
 

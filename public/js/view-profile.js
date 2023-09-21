@@ -2,9 +2,11 @@ if (document.readyState == "loading") document.addEventListener("DOMContentLoade
 else main()
 
 function main() {
+    const url = new URL(window.location.href);
+    const id = url.pathname.split('/').pop();
     const userId = JSON.parse(getLocalStorage("loginState")).userId;
-
     const userDetails = JSON.parse(getLocalStorage("current-user"))
+
     if (!userDetails) {
         fetchUserData(`/admin/get/userById/${userId}`)
             .then(response => {
@@ -21,12 +23,20 @@ function main() {
     }
     else {
         setUserdata(userDetails)
-        setUserProfilePageData(userDetails)
     }
 
+    fetchUserData(`/admin/get/userById/${id}`)
+        .then(response => {
+            //update the credentials
+            const userDet = response.document;
+            console.log(userDet);
+            setUserProfilePageData(userDet)
 
+        })
+        .catch(error => {
+            console.log(error);
+        })
 }
-
 
 async function fetchUserData(url) {
     try {
@@ -43,7 +53,7 @@ async function fetchUserData(url) {
 function setUserdata(data) {
     document.getElementById("current_user-image").setAttribute("src", data.profilePicUrl);
     document.getElementById("current_user-name").innerText = `${data.firstname} ${data.lastname}`;
-    document.getElementById("title-header").innerText = `CCap ~ ${data.firstname} ${data.lastname}`;
+    document.getElementById("title-header").innerText = `${data.firstname} ${data.lastname}`;
 }
 
 function setUserProfilePageData(data) {

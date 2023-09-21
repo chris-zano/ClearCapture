@@ -1,58 +1,48 @@
-.container_main {
+main.container_main {
     height: 90vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 95vw;
+    margin-inline: auto;
+    margin-top: 20px;
+    display: grid;
+    gap: 1rem;
+    place-items: center;
 }
 
-form{
+.profile_item {
+    min-height: fit-content;
+    width: 40vw;
+}
+
+.profile_item form {
     background-color: #fdffff;
     box-shadow: 0px 3px 30px #a6a7a798;
-    width: 40vw;
-    min-height: 350px;
     padding: 1rem;
     border-radius: 1rem;
+
+    height: 350px;
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 .form_title {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     font-weight: 500;
-    font-size: 30px;
+    font-size: 22px;
     color: rgb(13, 198, 87);
 }
 
-.form_sub_title {
+.form_div {
     display: flex;
-    justify-content: start;
-    align-items: center;
-    font-weight: 500;
-    font-size: 20px;
-    color: rgb(13, 158, 198);
+    gap: 10px;
 }
 
-form {
-    height: 100%;
-    display: grid;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-}
 
-form div {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-}
-
-label {
-    font-weight: 400;
-    font-size: 18px;
-}
-
-div input {
+input[type="text"] {
     border-bottom: 1px solid #111;
     border-radius: 3px;
     height: 30px;
@@ -61,42 +51,49 @@ div input {
     font-size: 13px;
 }
 
-#login_accountBtn , #create_accountBtn{
-    color: #ef14ef;
-}
-
-#login_accountBtn:hover , #create_accountBtn:hover {
-    color: #009b9b;
-}
-
 input[type="submit"] {
+    height: 30px;
+    min-width: 150px;
+    text-indent: 10px;
+    font-size: 13px;
     border: 1px solid transparent;
+    border-radius: 3px;
     background-color: #009b9b;
     color: #fff;
     font-size: 16px;
+    margin-inline: auto;
 }
 
-.error_message_div {
-    background-color: #fff;
-    box-shadow: 0px 3px 30px #a6a7a798;
-    position: fixed;
-    top: 10%;
-    padding: 1rem;
+.gendiv {
+    display: grid;
+    gap: 5px;
+}
+
+.gender_div {
     display: flex;
     justify-content: center;
-    align-items: center;
-    transition: all ease-in-out 300ms;
-    height: 50px;
-    border-radius: 10px;
+   align-items: center;
+    gap: 5px;
+}
+
+.default_image_div {
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.default_image_div img {
+    border-radius: 50%;
 }
 
 @media (min-width: 1024px) {
-    .login_form, .signup_form {
+    .profile_item {
         width: 400px;
     }
 }
+
 @media (max-width: 768px) {
-    .login_form, .signup_form {
+    .profile_item {
         width: 90vw;
     }
 
@@ -104,8 +101,4 @@ input[type="submit"] {
         font-weight: 400;
         font-size: 14px;
     }
-}
-
-.hidden {
-    display: none;
 }
