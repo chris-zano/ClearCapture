@@ -36,6 +36,10 @@ function main() {
         .catch(error => {
             console.log(error);
         })
+
+        document.getElementById("message-user").addEventListener("click", (e) => {
+            window.open(userDetails.whatsapp, "_blank")
+        })
 }
 
 async function fetchUserData(url) {
@@ -61,4 +65,11 @@ function setUserProfilePageData(data) {
     document.getElementById("user-profile-img").setAttribute("src", data.profilePicUrl);
     document.getElementById("creator-name").innerText = `${data.firstname} ${data.lastname}`;
 
+    getId("facebook_url").setAttribute("href", data.facebook);
+    getId("instagram_url").setAttribute("href", data.instagram);
+    getId("tiktok_url").setAttribute("href", data.tiktok);
+    getId("twitter_url").setAttribute("href", data.twitter);
+    getId("whatsapp_url").setAttribute("href", data.whatsapp);
+    getId("youtube_url").setAttribute("href", data.youtube);
 }
+

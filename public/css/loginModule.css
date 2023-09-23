@@ -46,7 +46,7 @@ label {
 div input {
     border-bottom: 1px solid #111;
     border-radius: 3px;
-    height: 30px;
+    height: 33px;
     min-width: 150px;
     text-indent: 10px;
     font-size: 13px;
@@ -65,6 +65,15 @@ input[type="submit"] {
     background-color: #009b9b;
     color: #fff;
     font-size: 16px;
+    cursor: pointer;
+    text-indent: unset;
+    transition: all ease-in-out 250ms;
+}
+
+input[type="submit"]:hover {
+    background-color: transparent;
+    border-color: #009b9b;
+    color: #111111;
 }
 
 .error_message_div {

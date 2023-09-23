@@ -6,7 +6,7 @@ const Profile = require("../models/Profiles");
 exports.uploadCollection = (req, res) => {
     const mediaFiles = [];
     for (let photo of req.files) {
-        mediaFiles.push(`/${photo.filename}`);
+        mediaFiles.push(`/client/collection/${photo.filename}`);
     }
     if (mediaFiles.length > 0) {
         const fileCollection = new FilesCollection(req.body.creatorId, mediaFiles)
@@ -32,6 +32,25 @@ exports.getAllCreators = (req, res) => {
     .then(response => {
         if(response.error == false) {
             res.status(200).json({document: response.document})
+        }
+    })
+}
+
+exports.getCollectionById = (req, res)  => {
+    console.log(req.params.collectionId);
+    FilesCollection.getCollectionById(req.params.collectionId)
+    .then(response => {
+        if (response.error == false) {
+            console.log(response.document);
+            res.status(200).json({message: "success"})
+        }
+    })
+    .catch(error => {
+        if (error.error == "Error fetching collecion"){
+            res.status(500).json({message: "Internal Server Error"})
+        }
+        else if( error.error == "no such collection found") {
+            res.status(404).json({message: "page not found"})
         }
     })
 }

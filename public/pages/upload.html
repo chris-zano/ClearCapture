@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/root">
-    <link rel="stylesheet" href="/css/header">
-    <link rel="stylesheet" href="/css/explore">
-    <title id="title-header">Profile - </title>
+    <link rel="stylesheet" href="/css/header">]
+    <link rel="stylesheet" href="/css/upload">]
+    <title id="title-header">Ccap ~ Upload</title>
 </head>
 
 <body>
@@ -22,14 +22,14 @@
                 </div>
                 <div class="current_user-display_arrow"><small>^</small></div>
                 <div class=" hidden" id="logout-action">
- <button type="button" id="profileBtn"><a href="/admin/redirect/profile">Profile</a></button>
+                    <button type="button" id="profileBtn"><a href="/admin/redirect/profile">Profile</a></button>
                     <button type="button" id="upload"><a href="/admin/redirect/upload">Upload</a></button>
                     <button type="button" id="logoutBtn">Logout</button>
                 </div>
             </div>
             <script>
                 document.getElementById("user-1").addEventListener("click", (e) => {
-                    if(!document.getElementById("logout-action").classList.contains("logout-action") && document.getElementById("logout-action").classList.contains("hidden")) {
+                    if (!document.getElementById("logout-action").classList.contains("logout-action") && document.getElementById("logout-action").classList.contains("hidden")) {
                         document.getElementById("logout-action").classList.remove("hidden");
                         document.getElementById("logout-action").classList.add("logout-action")
                     }
@@ -49,17 +49,32 @@
             </div>
         </nav>
     </header>
-    <main>
-        <div class="root">
-            <section class="heading">
-                <h1>Connect with professionals</h1>
-            </section>
-            <section class="creators" id="creators"></section>
+    <main class="container_main">
+        <form action="/admin/collection/upload" method="post" id="upload_photos_form" enctype="multipart/form-data">
+            <h1>Create a new collection</h1>
+            <div>
+                <input type="hidden" name="creatorId" id="creatorId">
+            </div>
+            <div>
+                <label for="collection">Upload photos</label>
+                <input type="file" name="photos" id="collection" multiple>
+
+                <input type="submit" value="Upload">
+            </div>
+        </form>
+
+        <div class="view-collection">
+            <!-- two links// one to view the collection, the other to share the collection -->
+            <div class="view-url">
+                <a href="#" id="viewurl">View</a>
+            </div>
+            <div class="share-url">
+                <a href="#" id="shareurl">Share</a>
+            </div>
         </div>
     </main>
     <script src="/js/utils"></script>
-    <script src="/js/signinAuth"></script>
-    <script src="/js/index"></script>
+    <script src="/js/upload"></script>
 </body>
 
 </html>

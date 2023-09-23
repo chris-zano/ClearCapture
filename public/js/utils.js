@@ -22,7 +22,7 @@ async function getUserProfile(id) {
  * @param {CallableFunction} callback 
  */
 function addeventlistener(element, event, callback) {
-   element.addEventListener(event, callback)
+    element.addEventListener(event, callback)
 }
 
 /**
@@ -86,4 +86,36 @@ function removeLocalStorage(key) {
  */
 function setLocalStorage(key, value) {
     localStorage.setItem(key, value);
+}
+
+try {
+    const userId = JSON.parse(getLocalStorage("loginState")).userId;
+
+    const userDetails = JSON.parse(getLocalStorage("current-user"))
+    if (!userDetails) {
+        fetchUserData(`/admin/get/userById/${userId}`)
+            .then(response => {
+                //update the credentials
+                const userDetails = response.document;
+                setLocalStorage("current-user", JSON.stringify(userDetails));
+
+                setUserdata(userDetails)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    }
+    else {
+        setUserdata(userDetails)
+    }
+
+    function setUserdata(data) {
+        document.getElementById("current_user-image").setAttribute("src", data.profilePicUrl);
+        document.getElementById("current_user-name").innerText = `${data.firstname} ${data.lastname}`;
+        document.getElementById("title-header").innerText = `CCap ~ ${data.firstname} ${data.lastname}`;
+    }
+}
+catch (error) {
+    console.log(error);
 }

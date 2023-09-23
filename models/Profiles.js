@@ -24,7 +24,7 @@ class Profile {
      * @param {string} id User id.
      * *The user id should be authenticated by the User class before beign passed as a parameter to this class
      */
-    
+
     constructor(id) {
         this._id = id;
     }
@@ -43,7 +43,12 @@ class Profile {
             gender: '',
             dob: '',
             profilePicUrl: '',
-            
+            instagram: "",
+            twitter: "",
+            facebook: "",
+            tiktok: "",
+            youtube: "",
+            whatsapp: "",
         }
 
         return new Promise((resolve, reject) => {
@@ -265,6 +270,53 @@ class Profile {
         })
     }
 
+    static updateUserSocials(id, instagram, facebook, twitter, tiktok, youtube, whatsapp) {
+        console.log(id);
+        return new Promise((resolve, reject) => {
+            User.checkId(id)
+                .then(response => {
+                    if (response.msg == "User match") {
+                        console.log("confirm here");
+                        Profile.checkProfile(id)
+                            .then(res => {
+                                if (res.msg == "User match") {
+                                    console.log("confirm here 2");
+                                    db.update(
+                                        { _id: id },
+                                        {
+                                            $set: {
+                                                instagram: instagram,
+                                                twitter: twitter,
+                                                facebook: facebook,
+                                                tiktok: tiktok,
+                                                youtube: youtube,
+                                                whatsapp: whatsapp
+                                            }
+                                        },
+                                        ((err, numReplaced) => {
+                                            console.log("confirm here 3");
+                                            if (err) reject({ error: true, msg: `c=> ${error}` })
+                                            else {
+                                                console.log(numReplaced);
+                                                resolve({ error: false, msg: "success", userID: id, docUpdated: numReplaced });
+                                            }
+                                        })
+                                    )
+                                }
+                            })
+                            .catch(error => {
+                                console.log("confirm here 4");
+                                reject({ error: true, msg: `a=> ${error}` })
+                            })
+                    }
+                })
+                .catch(error => {
+                    console.log("confirm here 5");
+                    reject({ error: true, msg: `b=> ${error}` })
+                })
+        })
+    }
+
     static updatePictureUrl(id, profilePicUrl) {
         return new Promise((resolve, reject) => {
             User.checkId(id)//check if user is a registered user
@@ -281,7 +333,7 @@ class Profile {
                                             }
                                         },
                                         ((err, numReplaced) => {
-                                            if (err) reject({ error: true, msg: `c=> ${error}` })
+                                            if (err) reject({ error: true, msg: `c=> ${err}` })
                                             else {
                                                 resolve({ error: false, msg: "success", userID: id, docUpdated: numReplaced });
                                             }
@@ -309,11 +361,11 @@ class Profile {
     static getUserProfileById(id) {
         return new Promise((resolve, reject) => {
             db.find(
-                {_id: id},
-                {multi: false},
+                { _id: id },
+                { multi: false },
                 (error, document) => {
-                    if(error) reject({error: true, message: error, document: null});
-                    resolve({error:false, message: "data retreived successfully", document: document})
+                    if (error) reject({ error: true, message: error, document: null });
+                    resolve({ error: false, message: "data retreived successfully", document: document })
                 }
             )
         })
@@ -327,11 +379,11 @@ class Profile {
     static getUserProfilePicture(id) {
         return new Promise((resolve, reject) => {
             db.find(
-                {_id: id},
-                {multi: false},
+                { _id: id },
+                { multi: false },
                 (error, document) => {
-                    if (error) reject({error: true, message: error, imgUrl: null});
-                    resolve({error: false, message:"image found", imgUrl: document[0].profilePicUrl})
+                    if (error) reject({ error: true, message: error, imgUrl: null });
+                    resolve({ error: false, message: "image found", imgUrl: document[0].profilePicUrl })
                 }
             )
         })
@@ -344,8 +396,8 @@ class Profile {
     static getAllCreators() {
         return new Promise((resolve, reject) => {
             db.find({}, (err, doc) => {
-                if (err) reject({error:true, message: err})
-                resolve({error:false, document:doc})
+                if (err) reject({ error: true, message: err })
+                resolve({ error: false, document: doc })
             })
         })
     }

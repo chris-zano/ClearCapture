@@ -1,11 +1,64 @@
+header.header_wrapper {
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    border-bottom: 1px solid #d1d1d1;
+    padding: 0 0 0 0.5rem;
+}
+
+.header_wrapper div {
+    margin-left: 0.5rem;
+    width: 150px;
+    height: 30px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    color: #111;
+}
+
+.header_wrapper div a {
+    width: 100%;
+    height: 100%;
+    font-weight: 500;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_wrapper div:hover {
+    border-color: #009b9b;
+    color: #111;
+}
+
 main.container_main {
     height: 90vh;
     width: 95vw;
     margin-inline: auto;
+    padding: 2rem 0;
     margin-top: 20px;
     display: grid;
+    grid-auto-flow: row;
     gap: 1rem;
     place-items: center;
+}
+
+.toast_message {
+    /* width: 120px; */
+    padding: 1rem;
+    border-radius: 3px;
+    height: 50px;
+    background-color: #009b9b;
+    box-shadow: 0px 3px 30px #a6a7a798;
+    position: fixed;
+    z-index: 99999;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all ease-in-out 300ms;
 }
 
 .profile_item {
@@ -18,8 +71,7 @@ main.container_main {
     box-shadow: 0px 3px 30px #a6a7a798;
     padding: 1rem;
     border-radius: 1rem;
-
-    height: 350px;
+    min-height: 350px;
     width: 100%;
     display: grid;
     gap: 10px;
@@ -38,12 +90,15 @@ main.container_main {
 
 .form_div {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 10px;
 }
 
 
-input[type="text"] {
-    border-bottom: 1px solid #111;
+input[type="text"],
+input[type="url"] {
+    border: 1px solid #111;
     border-radius: 3px;
     height: 30px;
     min-width: 150px;
@@ -54,7 +109,6 @@ input[type="text"] {
 input[type="submit"] {
     height: 30px;
     min-width: 150px;
-    text-indent: 10px;
     font-size: 13px;
     border: 1px solid transparent;
     border-radius: 3px;
@@ -62,6 +116,13 @@ input[type="submit"] {
     color: #fff;
     font-size: 16px;
     margin-inline: auto;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: transparent;
+    border-color: #009b9b;
+    color: #111111;
 }
 
 .gendiv {
@@ -72,7 +133,7 @@ input[type="submit"] {
 .gender_div {
     display: flex;
     justify-content: center;
-   align-items: center;
+    align-items: center;
     gap: 5px;
 }
 

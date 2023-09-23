@@ -205,6 +205,12 @@
         border-radius: 50%;
     }
 
+    .layer-2 li a svg.svg-loc {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+    }
+
     .layer-2 li a p {
         color: #535353;
         font-size: 13px;

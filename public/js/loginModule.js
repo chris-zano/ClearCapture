@@ -13,7 +13,7 @@ if (!getId("login_form").classList.contains("hidden") && getId("signup_form").cl
                     toastErrorMessage(response.message);
                 }
                 else if (response.error == false && response.message == "success") {
-                    console.log(response);
+                    localStorage.clear()
                     const expiration_date = Date.now() + 604_800
                     const authObj = {
                         isLoggedIn: true,
@@ -51,6 +51,7 @@ addeventlistener(getId("signupForm"), "submit", (e) => {
                     localStorage.clear()
                     localStorage.setItem("loginState", JSON.stringify(authObj));
                     localStorage.setItem("loginNotification", JSON.stringify({ count: 1 }));
+                    localStorage.setItem("vp-status", JSON.stringify({status: "default"}))
 
                    window.location.href = "/admin/redirect/createUserProfile";
                 }

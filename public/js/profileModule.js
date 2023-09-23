@@ -24,6 +24,10 @@ function main() {
         setUserProfilePageData(userDetails)
     }
 
+    document.getElementById("edit-profile").addEventListener("click", (e) => {
+        setLocalStorage("vp-status", JSON.stringify({status: "edit"}))
+        window.location.href = "/admin/redirect/createUserProfile"
+    })
 
 }
 
@@ -50,5 +54,12 @@ function setUserProfilePageData(data) {
     document.getElementById("banner-image").setAttribute("src", data.profilePicUrl);
     document.getElementById("user-profile-img").setAttribute("src", data.profilePicUrl);
     document.getElementById("creator-name").innerText = `${data.firstname} ${data.lastname}`;
+
+    getId("facebook_url").setAttribute("href", data.facebook);
+    getId("instagram_url").setAttribute("href", data.instagram);
+    getId("tiktok_url").setAttribute("href", data.tiktok);
+    getId("twitter_url").setAttribute("href", data.twitter);
+    getId("whatsapp_url").setAttribute("href", data.whatsapp);
+    getId("youtube_url").setAttribute("href", data.youtube);
 
 }

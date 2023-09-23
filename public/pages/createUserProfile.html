@@ -10,14 +10,15 @@
 </head>
 
 <body>
-    <header>
+    <header class="header_wrapper">
         <div class="nav"><a href="javascript:history.back()">Back</a></div>
 
     </header>
-    <main class="container_main">
+    <div class="toast_message hidden" id="toast_message"></div>
+    <main class="container_main" id="container_main">
         <div class="profile_item" id="default">
             <form action="#" id="firstname_form">
-                <div class="form_title">Edit Profile</div>
+                <div class="form_title">Add Your Name</div>
                 <div class="form_div">
                     <label for="firstname">*First name</label>
                     <input type="text" name="firstname" id="firstname" required>
@@ -29,14 +30,14 @@
                 </div>
 
                 <div class="form_div">
-                    <input type="submit" value="Next" id="next-btn">
+                    <input type="submit" value="Next" id="next-btn" class="next-btn">
                 </div>
             </form>
         </div>
 
         <div class="profile_item _gd" id="dobgender">
             <form action="#" id="genderDob">
-                <div class="form_title">Edit Profile</div>
+                <div class="form_title">Select Gender and DOB</div>
                 <div class="gendiv">
                     <div class="gendertitle">Gender</div>
                     <div class="gender_div">
@@ -58,30 +59,66 @@
                     </div>
                 </div>
 
-                <input type="submit" value="Next" id="next-btn">
+                <input type="submit" value="Next" id="next-btn" class="next-btn">
             </form>
         </div>
 
         <div class="profile_item" id="defusernmae">
             <form action="#" id="usernameForm">
-                <div class="form_title">Edit Profile</div>
+                <div class="form_title">Add a username</div>
                 <div class="form_div">
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username" required>
                 </div>
 
                 <div class="form_div">
-                    <input type="submit" value="Next" id="next-btn">
+                    <input type="submit" value="Next" id="next-btn" class="next-btn">
                 </div>
             </form>
         </div>
 
+        <div class="profile_item" id="socials">
+            <form action="#" method="post"  id="socials_form">
+                <div class="form_title">Edit Socials</div>
+                
+                <div class="form_div">
+                    <label for="instagram">Instagram</label>
+                    <input type="url" name="instagram" id="instagram">
+                </div>
+                <div class="form_div">
+                    <label for="twitter">twitter</label>
+                    <input type="url" name="twitter" id="twitter">
+                </div>
+                <div class="form_div">
+                    <label for="facebook">facebook</label>
+                    <input type="url" name="facebook" id="facebook">
+                </div>
+                <div class="form_div">
+                    <label for="tiktok">tiktok</label>
+                    <input type="url" name="tiktok" id="tiktok">
+                </div>
+                <div class="form_div">
+                    <label for="youtube">youtube</label>
+                    <input type="url" name="youtube" id="youtube">
+                </div>
+                <div class="form_div">
+                    <label for="whatsapp">whatsapp</label>
+                    <input type="url" name="whatsapp" id="whatsapp">
+                </div>
+
+                <input type="hidden" name="userId" id="profilePic_userId">
+
+                <input type="submit" value="Next" id="next-btn" class="next-btn">
+            </form>
+
+        </div>
+
         <div class="profile_item" id="pictureprof">
             <form action="/admin/update/ppic" method="post" enctype="multipart/form-data" id="profilePic_form">
-                <div class="form_title">Edit Profile</div>
+                <div class="form_title">Edit Profile Picture</div>
                 <div class="default_image_div" class="form_div">
                     <img src="/admin/image/favicon.jpg" alt="default_image" width="100px" height="100px"
-                        class="default_image">
+                        class="default_image" loading="lazy" id="default_image">
                 </div>
                 <div class="form_div">
                     <input type="file" name="ppic" id="ppic" accept="image/jpeg, image/jpg, image/png, image/gif"
@@ -90,7 +127,7 @@
 
                 <input type="hidden" name="userId" id="profilePic_userId">
 
-                <input type="submit" value="Next" id="next-btn">
+                <input type="submit" value="Next" id="final-next-btn" class="next-btn">
             </form>
 
         </div>

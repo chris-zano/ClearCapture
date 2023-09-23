@@ -70,7 +70,7 @@ header .logout-action {
     color: #141414;
 }
 
-#profileBtn {
+#profileBtn, #upload {
     width: 100%;
 }
 

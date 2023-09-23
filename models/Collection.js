@@ -36,6 +36,21 @@ class FilesCollection {
                 })
         })
     }
+
+    static getCollectionById(id) {
+        return new Promise((resolve, reject) => {
+            db.find(
+                { _id: id },
+                { multi: true },
+                (error, document) => {
+                    if (error) reject({ error: "Error fetching collecion" })
+                    else {
+                        resolve({ error: false, document: document })
+                    }
+                }
+            )
+        })
+    }
 }
 
 module.exports = FilesCollection;

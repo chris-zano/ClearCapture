@@ -31,9 +31,13 @@ exports.renderImage = (req, res) => {
 }
 
 exports.renderVectorGraphics = (req, res) => {
-    fs.createReadStream(path.join(__dirname, "../public/assets/svg", req.params.filename)).pipe(res);   
+    fs.createReadStream(path.join(__dirname, "../public/assets/svgs", req.params.filename)).pipe(res);   
 }
 
 exports.renderUserProfilePicture = (req, res) => {
     fs.createReadStream(path.join(__dirname, "../DB/profile_images/", req.params.filename)).pipe(res);   
+}
+
+exports.renderSocialsPng = (req, res) => {
+    fs.createReadStream(path.join(__dirname, "../public/assets/socials", `${req.params.filename}.png`)).pipe(res);   
 }

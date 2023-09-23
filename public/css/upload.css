@@ -1,0 +1,11 @@
+main.container_main {
+    height: 90vh;
+    width: 95vw;
+    margin-inline: auto;
+    padding: 2rem 0;
+    margin-top: 20px;
+    display: grid;
+    grid-auto-flow: row;
+    gap: 1rem;
+    place-items: center;
+}

@@ -199,9 +199,15 @@
         color: #000000;
     }
 
-    .layer-2 li a img {
+    .layer-2 li a img{
         width: 25px;
         height: 25px;
+        border-radius: 50%;
+    }
+    
+    .layer-2 li a svg.svg-loc {
+        width: 15px;
+        height: 15px;
         border-radius: 50%;
     }
 
@@ -209,12 +215,7 @@
         color: #535353;
         font-size: 13px;
     }
-
-    /* .offset-about-creator {
-        width: 800px;
-        height: 400px;
-        background-color: #fff;
-    } */
+    
 }
 
 @media (min-width: 1024px) {
@@ -262,6 +263,11 @@
         right: 10%;
         padding: 0.3rem;
     }
+    .layer-2 li a svg.svg-loc {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+    }
 }
 
 @media (min-width:1100px) {
@@ -308,6 +314,11 @@
         top: 15px;
         right: 10%;
         padding: 0.3rem;
+    }
+    .layer-2 li a svg.svg-loc {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
     }
 }
 
@@ -516,5 +527,10 @@
     .layer-2 li a p {
         color: #535353;
         font-size: 13px;
+    }
+    .layer-2 li a svg.svg-loc {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
     }
 }

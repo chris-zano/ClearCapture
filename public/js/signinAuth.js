@@ -64,7 +64,7 @@ function checkLoginState() {
                 .then(response => {
                     if (response.error == false && response.message == "User Logged Out Successfully") {
 
-                        localStorage.removeItem("loginState");
+                        localStorage.clear();
                         localStorage.setItem("loginNotification", JSON.stringify({ count: 1 }));
                         alert("Session Expired. Please Login again to continue");
                         window.location.href = "/admin/redirect/login";
