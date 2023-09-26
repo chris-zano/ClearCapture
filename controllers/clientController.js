@@ -2,6 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const FilesCollection = require("../models/Collection");
 const Profile = require("../models/Profiles");
+const nodemailer = require("nodemailer");
+const Feedback = require("../models/Feedback");
 
 exports.uploadCollection = (req, res) => {
     console.log(req.body);
@@ -48,7 +50,7 @@ exports.fetchCollectionfiles = (req, res) => {
         .then(response => {
             if (response.error === false) {
                 // Read and send the HTML file
-                res.status(200).json({document: response.document})
+                res.status(200).json({ document: response.document })
             }
         })
         .catch(error => {
@@ -63,18 +65,52 @@ exports.fetchCollectionfiles = (req, res) => {
 exports.authCollectionPassKey = (req, res) => {
     console.log(req.params);
     FilesCollection.authPassKeyAndDownload(req.params.id, req.params.key)
+        .then(response => {
+            if (response.error == false) {
+                res.status(200).json({ document: response.document })
+            }
+        })
+        .catch(error => {
+            if (error.message == "An error occurred while fetching the document") {
+                res.status(500).json({ message: "Internal server error" })
+            }
+            else if (error.error == true && error.message == "No match was found") {
+                res.status(404).json({ message: "No match was found" })
+            }
+        })
+}
+
+exports.saveFeedbackMessage = (req, res) => {
+    const feedback = new Feedback(req.body.email, req.body.username, req.body.phone, req.body.message)
+    feedback.init()
     .then(response => {
-        if (response.error == false) {
-            res.status(200).json({document: response.document})
-        }
+        const transporter = nodemailer.createTransport({
+            service: "Gmail",
+            auth: {
+                user: "niicodes.teamst0199@gmail.com",
+                pass: "ldwqdwzudicildio"
+            }
+        })
+        const mailOptions = {
+            from: "niicodes.teamst0199@gmail.com",
+            to: req.body.email,
+            subject: 'Thanks for Reaching Out to Us',
+            text: `Hello ${req.body.username}, Hope this message reaches you well. We want to let you know tthat we have received your message and we will be working on it.`
+        };
+    
+    
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+                res.status(500).json({ message: "Internal server Error" })
+            } else {
+                console.log('Email sent:', info.response);
+                res.status(200).json({message: "email sent"})
+            }
+        });
     })
-    .catch(error => {
-        if (error.message == "An error occurred while fetching the document")
-        {
-            res.status(500).json({message: "Internal server error"})
-        }
-        else if (error.error == true && error.message ==  "No match was found") {
-            res.status(404).json({message: "No match was found"})
-        }
+    .catch (err => {
+        res.status(500).json({message:"Internal server Error"})
     })
+    
 }
