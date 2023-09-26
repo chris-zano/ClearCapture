@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/root">
-    <link rel="stylesheet" href="/css/header">]
-    <link rel="stylesheet" href="/css/upload">]
+    <link rel="stylesheet" href="/css/header">
+    <link rel="stylesheet" href="/css/upload">
     <title id="title-header">Ccap ~ Upload</title>
 </head>
 
@@ -51,15 +51,23 @@
     </header>
     <main class="container_main">
         <form action="/admin/collection/upload" method="post" id="upload_photos_form" enctype="multipart/form-data">
-            <h1>Create a new collection</h1>
+            <div>
+                <h1>Create a new collection</h1>
+            </div>
             <div>
                 <input type="hidden" name="creatorId" id="creatorId">
             </div>
-            <div>
-                <label for="collection">Upload photos</label>
+            <div class="label">
+                <label for="collection">Select photos</label>
                 <input type="file" name="photos" id="collection" multiple>
-
+            </div>
+            <div class="passkey">
+                <label for="passkey">Create a Passkey</label>
+                <input type="password" name="passkey" id="passkey" required>
+            </div>
+            <div>
                 <input type="submit" value="Upload">
+
             </div>
         </form>
 
@@ -74,6 +82,7 @@
         </div>
     </main>
     <script src="/js/utils"></script>
+    <script src="/js/signinAuth"></script>
     <script src="/js/upload"></script>
 </body>
 

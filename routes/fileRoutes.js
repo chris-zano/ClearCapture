@@ -10,7 +10,7 @@ router.get("/admin/image/:filename", fileController.renderImage);
 router.get("/image/profile/:filename", fileController.renderUserProfilePicture);
 router.get("/socials/images/:filename", fileController.renderSocialsPng);
 router.get("/admin/vector_graphics/:filename", fileController.renderVectorGraphics);
-
+router.get("/client/collection/:filename", fileController.downloadFile)
 
 //html routes / redirect routes
 router.get("/", fileController.renderHomeView);

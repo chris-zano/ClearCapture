@@ -14,9 +14,10 @@ function main() {
     })
 
     addeventlistener(getId("upload_photos_form"), "submit", async (e) => {
+        e.preventDefault();
         if (getattribute(getId("upload_photos_form"), "action",) != "/admin/collection/upload") {
-            e.preventDefault();
             console.log("no route has been set");
+            e.preventDefault();
         }
         else {
             e.preventDefault();
@@ -33,7 +34,7 @@ function main() {
                 // create shareable link / url
                 console.log(data.collectionId);
                 createShareLink(data.collectionId);
-                
+
             } catch (error) {
                 console.error(error);
                 console.log("An error occurred.");
@@ -46,5 +47,17 @@ function main() {
 
 function createShareLink(id) {
     const url = new URL(`${(window.location.href).replace("upload", "download")}/${id}`)
-    setattribute(getId("shareurl"), "href", url)
+    // setattribute(getId("shareurl"), "href", url);
+
+    // Copy the URL to the clipboard
+    navigator.clipboard.writeText(url.toString())
+        .then(() => {
+            console.log("URL copied to clipboard:", url.toString());
+            // You can also display a success message or perform other actions here
+        })
+        .catch(err => {
+            console.error("Error copying URL to clipboard:", err);
+            // Handle errors here, e.g., show an error message to the user
+        });
+
 }

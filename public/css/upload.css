@@ -9,3 +9,32 @@ main.container_main {
     gap: 1rem;
     place-items: center;
 }
+
+form#upload_photos_form {
+    background-color: #ffffff;
+    box-shadow: 0pc 3px 30px #cfcece;
+    height: 200px;
+    min-width: 350px;
+    max-width: 90vw;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: grid;
+    place-items: center;
+}
+
+form#upload_photos_form h1 {
+    font-size: 30px;
+    text-align: center;
+}
+
+#passkey {
+    border: 1px solid black;
+
+}
+
+
+.view-collection {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}

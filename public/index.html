@@ -20,16 +20,16 @@
                 <div class="current_user-name">
                     <h2 id="current_user-name">John Doe</h2>
                 </div>
-                <div class="current_user-display_arrow"><small>^</small></div>
+                <div class="current_user-display_arrow"><small id="caret-arrow">^</small></div>
                 <div class=" hidden" id="logout-action">
- <button type="button" id="profileBtn"><a href="/admin/redirect/profile">Profile</a></button>
+                    <button type="button" id="profileBtn"><a href="/admin/redirect/profile">Profile</a></button>
                     <button type="button" id="upload"><a href="/admin/redirect/upload">Upload</a></button>
                     <button type="button" id="logoutBtn">Logout</button>
                 </div>
             </div>
             <script>
                 document.getElementById("user-1").addEventListener("click", (e) => {
-                    if(!document.getElementById("logout-action").classList.contains("logout-action") && document.getElementById("logout-action").classList.contains("hidden")) {
+                    if (!document.getElementById("logout-action").classList.contains("logout-action") && document.getElementById("logout-action").classList.contains("hidden")) {
                         document.getElementById("logout-action").classList.remove("hidden");
                         document.getElementById("logout-action").classList.add("logout-action")
                     }

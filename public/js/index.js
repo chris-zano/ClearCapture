@@ -53,11 +53,11 @@ function main() {
         }
     }
 
-    setTimeout(()=> {
+    setTimeout(() => {
         localStorage.removeItem("current-user")
         localStorage.removeItem("creatorsCollection")
 
-    },300_000)
+    }, 300_000)
 }
 
 
@@ -80,6 +80,7 @@ function setUserdata(data) {
 }
 
 function addCreatorcard(data) {
+    console.log(data);
     const card = document.createElement('div');
     card.classList.add('creator');
     card.setAttribute("id", data._id);
@@ -93,9 +94,26 @@ function addCreatorcard(data) {
             </div>
             <div class="socials" id="socials">
                 <ul>
-                    <li><a href="#"><img src="#" alt="soc"></a></li>
-                    <li><a href="#"><img src="#" alt="soc"></a></li>
-                    <li><a href="#"><img src="#" alt="soc"></a></li>
+                    <li>
+                        <a href="${data.facebook}" id="facebook_url" target="_blank">
+                            <img src="/socials/images/facebook" alt="facebook">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="${data.instagram}" id="instagram_url" target="_blank">
+                            <img src="/socials/images/instagram" alt="instagram">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="${data.tiktok}" id="tiktok_url" target="_blank">
+                            <img src="/socials/images/tiktok" alt="tiktok">
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="${data.twitter}" id="twitter_url" target="_blank">
+                            <img src="/socials/images/twitter" alt="twitter">
+                        </a>
+                    </li> 
                 </ul>
             </div>
         </a>

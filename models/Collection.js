@@ -6,9 +6,10 @@ const filepath = path.join(__dirname, "../DB/neDB/collection.db");
 const db = loadDB(filepath);
 
 class FilesCollection {
-    constructor(creatorId, mediaFiles) {
+    constructor(creatorId, mediaFiles, passkey) {
         this._creatorId = creatorId;
         this._mediaFiles = mediaFiles;
+        this._passkey = AuthFactor.hashWithKey(passkey, "low")
     }
 
     init() {
@@ -19,7 +20,7 @@ class FilesCollection {
                         const collectionObject = {
                             creatorId: this.creatorId,
                             mediaFiles: this._mediaFiles,
-                            key: "none",
+                            key: this._passkey,
                             downloads: 0,
                             privacy: true
                         }
@@ -46,6 +47,26 @@ class FilesCollection {
                     if (error) reject({ error: "Error fetching collecion" })
                     else {
                         resolve({ error: false, document: document })
+                    }
+                }
+            )
+        })
+    }
+
+    static authPassKeyAndDownload(id, key) {
+        return new Promise((resolve, reject) => {
+            db.find(
+                { _id: id, key: AuthFactor.hashWithKey(key, "low") },
+                { multi: false },
+                (error, document) => {
+                    if (error) reject({ error: error, message: "An error occurred while fetching the document" })
+                    else {
+                        if (document) {
+                            resolve({ error: false, document: document[0].mediaFiles })
+                        }
+                        else {
+                            reject({ error: true, message: "No match was found" })
+                        }
                     }
                 }
             )

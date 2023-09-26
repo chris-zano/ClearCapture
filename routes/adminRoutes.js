@@ -25,5 +25,6 @@ router.get("/userLogout/:userId", adminController.userLogout);
 
 router.get('/admin/get/userById/:userId', adminController.getUserById)
 router.get('/admin/get/creators', clientController.getAllCreators)
+router.get('/admin/auth/collection-passkey/:id/:key', clientController.authCollectionPassKey)
 
 module.exports = router;

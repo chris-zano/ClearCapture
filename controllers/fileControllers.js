@@ -41,3 +41,7 @@ exports.renderUserProfilePicture = (req, res) => {
 exports.renderSocialsPng = (req, res) => {
     fs.createReadStream(path.join(__dirname, "../public/assets/socials", `${req.params.filename}.png`)).pipe(res);   
 }
+
+exports.downloadFile = (req, res) => {
+    fs.createReadStream(path.join(__dirname, `../DB/collection_media/${req.params.filename}`)).pipe(res)
+}
