@@ -114,6 +114,11 @@ function addCreatorcard(data) {
                             <img src="/socials/images/twitter" alt="twitter">
                         </a>
                     </li> 
+                    <li>
+                        <a href="${data.whatsapp}" id="whatsapp_url" target="_blank">
+                            <img src="/socials/images/whatsapp" alt="whatsapp">
+                        </a>
+                    </li> 
                 </ul>
             </div>
         </a>

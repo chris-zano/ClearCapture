@@ -46,6 +46,12 @@ class User {
             User.checkEmail(this._email)
                 .then(res => {
                     if (res.msg == "No user with such email") {
+                    reject({ error: true, msg: err });
+                        
+                    }
+                })
+                .catch(err => {
+                    if (err.msg == "No user with such email") {
                         db.insert(
                             userObject,
                             (err, doc) => {
@@ -56,11 +62,9 @@ class User {
                                     resolve({ error: false, msg: "No error! User created successfuly", userId: doc["_id"] })
                                 }
                             }
-                        )
+                        ) 
                     }
-                })
-                .catch(err => {
-                    reject({ error: true, msg: err });
+                    
                 })
         })
     }
