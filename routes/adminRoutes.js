@@ -23,6 +23,9 @@ router.post("/admin/collection/upload", uploadCollection.array("photos", 12), cl
 router.get("/admin/redirect/download/:collectionId", clientController.getCollectionById)
 
 router.get("/userLogout/:userId", adminController.userLogout);
+router.get("/admin/verify-email/:email", adminController.verifyEmail)
+router.get("/admin/verify-code/:code/:email", adminController.verifyCode)
+router.get("/admin/password-reset/:email/:password/:userId", adminController.resetPassword)
 
 
 router.get('/admin/get/userById/:userId', adminController.getUserById)

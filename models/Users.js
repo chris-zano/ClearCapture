@@ -44,24 +44,24 @@ class User {
 
         return new Promise((resolve, reject) => {
             User.checkEmail(this._email)
-                    .then(res => {
-                        if (res.msg == "No user with such email") {
-                            db.insert(
-                                userObject,
-                                (err, doc) => {
-                                    if (err) {
-                                        reject({ error: true, msg: err });
-                                    }
-                                    else {
-                                        resolve({ error: false, msg: "No error! User created successfuly", userId: doc["_id"] })
-                                    }
+                .then(res => {
+                    if (res.msg == "No user with such email") {
+                        db.insert(
+                            userObject,
+                            (err, doc) => {
+                                if (err) {
+                                    reject({ error: true, msg: err });
                                 }
-                            )
-                        }
-                    })
-                    .catch(err => {
-                        reject({ error: true, msg: err });
-                    })
+                                else {
+                                    resolve({ error: false, msg: "No error! User created successfuly", userId: doc["_id"] })
+                                }
+                            }
+                        )
+                    }
+                })
+                .catch(err => {
+                    reject({ error: true, msg: err });
+                })
         })
     }
 
@@ -113,10 +113,10 @@ class User {
                         reject(err);
                     }
                     if (doc.length == 0) {
-                        resolve({ msg: "No user with such email", email: email, userId: null });
+                        reject({ msg: "No user with such email", email: email, userId: null, error: true });
                     }
                     else if (doc.length == 1) {
-                        reject({error:true, msg: "User match", email: doc[0].email, userId: doc[0]["_id"] })
+                        resolve({ error: false, msg: "User match", email: doc[0].email, userId: doc[0]["_id"] })
                     }
                 }
             )
@@ -132,18 +132,18 @@ class User {
     static authWithPassword(id, password) {
         return new Promise((resolve, reject) => {
             db.find(
-                {_id: id, password:AuthFactor.hashWithKey(password, "low")},
-                {multi: false},
+                { _id: id, password: AuthFactor.hashWithKey(password, "low") },
+                { multi: false },
                 (err, doc) => {
                     if (err) {
-                        reject({error: true, msg: err});
+                        reject({ error: true, msg: err });
                     }
                     else {
-                        if(doc.length == 0) {
-                            reject({error: true, msg: "Wrong Password"});
+                        if (doc.length == 0) {
+                            reject({ error: true, msg: "Wrong Password" });
                         }
                         else {
-                            resolve({error: false, msg: "Username and Password match", userID: doc[0]["_id"]});
+                            resolve({ error: false, msg: "Username and Password match", userID: doc[0]["_id"] });
                         }
                     }
                 }
@@ -162,32 +162,55 @@ class User {
     static updateUserPassword(userId, current_password, new_password) {
         return new Promise((resolve, reject) => {
             db.find(
-                {_id: userId},
-                {multi: false},
+                { _id: userId },
+                { multi: false },
                 (error, document) => {
-                    if(error) reject({error: true, message: error});
+                    if (error) reject({ error: true, message: error });
                     else {
-                        if(document[0].password == AuthFactor.hashWithKey(current_password, "low"))
-                        {
+                        if (document[0].password == AuthFactor.hashWithKey(current_password, "low")) {
                             db.update(
-                                {_id: userId},
+                                { _id: userId },
                                 {
                                     $set: {
                                         password: AuthFactor.hashWithKey(new_password, "low")
                                     }
                                 },
                                 (error, numReplaced) => {
-                                    if (error) reject({error: true, message: error});
+                                    if (error) reject({ error: true, message: error });
                                     else {
-                                        if(numReplaced == 1) {
-                                            resolve({error: false, message: "password updated"});
+                                        if (numReplaced == 1) {
+                                            resolve({ error: false, message: "password updated" });
                                         }
                                         else {
-                                            reject({error: true, message: "an unknown error occured!!!"});
+                                            reject({ error: true, message: "an unknown error occured!!!" });
                                         }
                                     }
                                 }
                             )
+                        }
+                    }
+                }
+            )
+        })
+    }
+
+    static resetUserPassword(email, password, userId) {
+        return new Promise((resolve, reject) => {
+            db.update(
+                { _id: userId, email: email },
+                {
+                    $set: {
+                        password: AuthFactor.hashWithKey(password, "low")
+                    }
+                },
+                (err, numReplaced) => {
+                    if (err) reject({ error: true, message: error });
+                    else {
+                        if (numReplaced == 1) {
+                            resolve({ error: false, message: "password updated" });
+                        }
+                        else {
+                            reject({ error: true, message: "an unknown error occured!!!" });
                         }
                     }
                 }

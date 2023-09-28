@@ -2,6 +2,8 @@ const path = require("path");
 const Profile = require("../models/Profiles");
 const User = require("../models/Users");
 const fs = require("fs");
+const nodemailer = require("nodemailer")
+const VerifyCode = require("../models/VerifyCode");
 
 exports.authenticateUsername = (req, res) => {
     Profile.checkUsernameExists(req.params.username, req.params.password)
@@ -118,21 +120,21 @@ exports.updateSocials = (req, res) => {
     const b = req.body
     console.log(b);
     Profile.updateUserSocials(b.userId, b.instagram, b.facebook, b.twitter, b.tiktok, b.youtube, b.whatsapp)
-    .then(response => {
-        console.log("confirm here 7");
-        if (response.error == false && response.msg == "success") {
-            res.status(200).json({userId: response.userID})
-            console.log("confirm here 8");
-        }
-        else {
-            res.status(201).json({error: "There was an error setting update to credentials"})
-            console.log("confirm here 9");
-        }
-    })
-    .catch(error => {
-        console.log("confirm here 10");
-        res.status(500).json({error: "There was a server error"})
-    })
+        .then(response => {
+            console.log("confirm here 7");
+            if (response.error == false && response.msg == "success") {
+                res.status(200).json({ userId: response.userID })
+                console.log("confirm here 8");
+            }
+            else {
+                res.status(201).json({ error: "There was an error setting update to credentials" })
+                console.log("confirm here 9");
+            }
+        })
+        .catch(error => {
+            console.log("confirm here 10");
+            res.status(500).json({ error: "There was a server error" })
+        })
 }
 
 exports.userUpdateProfilePic = (req, res) => {
@@ -162,4 +164,78 @@ exports.getUserById = (req, res) => {
         .catch(error => {
             res.status(201).json({ message: "No data matching this Id" })
         })
+}
+
+exports.verifyEmail = (req, res) => {
+    User.checkEmail(req.params.email)
+        .then(response => {
+            if (response.msg = "User match") {
+                const verificationCode = Math.floor(1000 + Math.random() * 9000);//generate random 4 digit number
+
+                //create a transporter profile, that allows login access to your gmail
+                const transporter = nodemailer.createTransport({
+                    service: "Gmail",
+                    auth: {
+                        user: "niicodes.teamst0199@gmail.com",
+                        pass: "ldwqdwzudicildio"
+                    }
+                })
+
+                //compose an email
+                const mailOptions = {
+                    from: "niicodes.teamst0199@gmail.com",
+                    to: req.params.email,
+                    subject: 'Email Verification Code',
+                    text: `Your verification code is: ${verificationCode}`
+                };
+
+                //send an email
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        console.log('Error sending email:', error);
+                    } else {
+                        console.log('Email sent:', info.response);
+                        const veriyObject = new VerifyCode(verificationCode, req.params.email)
+                        veriyObject.storeCodeAndEmail()
+                            .then(versponse => {
+                                if (versponse.error == null) {
+                                    res.status(200).json({ message: "code generated successfully", userId: response.userId });
+                                }
+                            })
+                            .catch(error => {
+                                res.status(404).json({ message: error });
+                            })
+                    }
+                });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            res.status(500).json({ error: error })
+        })
+}
+
+exports.verifyCode = (req, res) => {
+    const verifyObject = new VerifyCode(req.params.code, req.params.email);
+    verifyObject.verifyCodeAndEmail()
+        .then(response => {
+            res.status(200).json({ message: response.message })
+        })
+        .catch(error => {
+            res.status(200).json({ error: error });
+        })
+}
+
+exports.resetPassword = (req, res) => {
+    const { email, password, userId } = req.params;
+    console.log(email, password, userId);
+    User.resetUserPassword(email, password, userId)
+        .then(response => {
+            if (response.message == "password updated") {
+                res.status(200).json({ message: "password updated" });
+            }
+        })
+    .catch (error => {
+        res.status(500).json({error: error})
+    })
 }
