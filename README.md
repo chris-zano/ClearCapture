@@ -3,7 +3,7 @@
 ## ___Introduction___
 * The project, ClearCapture, is a audio/visual file sharing platform dedicated to providing secure and lossless file transmission from service providers to clients.
 * The service providers in question range from Photographers/Videographers, Graphic Designers or other content creators.
-* It supports payment, allows for creators to  advertise their work, and allows for a safe and secure system for creators when transacting with clients.
+
 * This project was developed using HTML5 CSS3 and JavaScript(ES6) for front-end, nodeJS for the back-end, MongoDB for database, MulterJS for handling FS, and Vercel for hosting services.
 
 ## ___Problem Statement:___
