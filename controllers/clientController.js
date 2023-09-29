@@ -8,8 +8,13 @@ const Feedback = require("../models/Feedback");
 exports.uploadCollection = (req, res) => {
     console.log(req.body);
     const mediaFiles = [];
+    console.log(req.files)
     for (let photo of req.files) {
-        mediaFiles.push(`/client/collection/${photo.filename}`);
+        const videoObj = {
+            url: `/client/collection/${photo.filename}`,
+            type: photo.mimetype
+        }
+        mediaFiles.push(videoObj);
     }
     if (mediaFiles.length > 0) {
         const fileCollection = new FilesCollection(req.body.creatorId, mediaFiles, req.body.passkey)

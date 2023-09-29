@@ -15,9 +15,26 @@ function main() {
             .then(response => {
                 const fileUrls = response;
                 fileUrls.forEach((file => {
+                    console.log(file.url)
+                    console.log(file.type.slice(file.type.indexOf("/")))
                     const anchor = document.createElement("a");
-                    anchor.href = file;
-                    anchor.download = `${file.slice(19)}.png`;
+                    anchor.href = file.url;
+                    switch (file.type.slice(file.type.indexOf("/"))) {
+                        case "/mp4":
+                            anchor.download = `${file.url.slice(19)}.mp4`;
+                            break;
+                        case "/png":
+                            anchor.download = `${file.url.slice(19)}.png`;
+                            break;
+                        case "/pdf":
+                            anchor.download = `${file.url.slice(19)}.pdf`;
+                            break;
+                        case "/jpeg":
+                            anchor.download = `${file.url.slice(19)}.jpeg`;
+                            break;
+                        default:
+                            break;
+                    }
                     anchor.style.display = "none";
                     document.body.appendChild(anchor);
                     console.log(anchor);
@@ -30,7 +47,7 @@ function main() {
             })
     })
 
-    
+
 }
 
 async function authenticateCollectionPassKey(id, key) {
@@ -40,7 +57,7 @@ async function authenticateCollectionPassKey(id, key) {
 
         return res.document
     }
-    catch(error) {
+    catch (error) {
         console.log(error);
     }
 }

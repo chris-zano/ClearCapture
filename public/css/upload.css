@@ -38,3 +38,24 @@ form#upload_photos_form h1 {
     justify-content: center;
     gap: 2rem;
 }
+
+#uploadbtn {
+    border-radius: 3px;
+    height: 33px;
+    min-width: 150px;
+    text-indent: 10px;
+    font-size: 13px;
+    border: 1px solid transparent;
+    background-color: #009b9b;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    text-indent: unset;
+    transition: all ease-in-out 250ms;
+}
+
+#uploadbtn:hover {
+    background-color: transparent;
+    border: 1px solid #111;   
+    color: #111;
+}

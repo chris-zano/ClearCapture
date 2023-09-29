@@ -52,6 +52,7 @@ function createShareLink(id) {
     // Copy the URL to the clipboard
     navigator.clipboard.writeText(url.toString())
         .then(() => {
+            alert('Url Copied to clipboard')
             console.log("URL copied to clipboard:", url.toString());
             // You can also display a success message or perform other actions here
         })
