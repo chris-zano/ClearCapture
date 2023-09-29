@@ -29,7 +29,6 @@ function main() {
         .then(response => {
             //update the credentials
             const userDet = response.document;
-            console.log(userDet);
             setUserProfilePageData(userDet)
 
         })

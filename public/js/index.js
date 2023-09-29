@@ -3,61 +3,33 @@ else main()
 
 function main() {
     const userId = JSON.parse(getLocalStorage("loginState")).userId;
-    const userDetails = JSON.parse(getLocalStorage("current-user"))
-    const creatorsCollection = JSON.parse(getLocalStorage("creatorsCollection"))
 
-    if (!userDetails) {
-        fetchUserData(`/admin/get/userById/${userId}`)
-            .then(response => {
-                //update the credentials
-                const userDetails = response.document;
-                setLocalStorage("current-user", JSON.stringify(userDetails));
-                setUserdata(userDetails);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-
-    }
-    else {
-        setUserdata(userDetails)
-    }
+    fetchUserData(`/admin/get/userById/${userId}`)
+        .then(response => {
+            //update the credentials
+            const userDetails = response.document;
+            setUserdata(userDetails);
+            
+        })
+        .catch(error => {
+            console.log(error);
+        })
 
     //check cached user data for creators
-    if (!creatorsCollection) {
-        fetchUserData(`/admin/get/creators`)
-            .then(response => {
-                //update the credentials
-                const creatorsCollection = response.document;
-                console.log(creatorsCollection);
-                setLocalStorage("creatorsCollection", JSON.stringify(creatorsCollection));
-                for (let creator of creatorsCollection) {
-                    console.log(userId);
-                    if (creator._id !== userId) {
-                        addCreatorcard(creator);
-                    }
+    fetchUserData(`/admin/get/creators`)
+        .then(response => {
+            //update the credentials
+            const creatorsCollection = response.document;
+            for (let creator of creatorsCollection) {
+                console.log(userId);
+                if (creator._id !== userId) {
+                    addCreatorcard(creator);
                 }
-
-            })
-            .catch(error => {
-                console.log(error);
-            })
-
-    }
-    else {
-        for (let creator of creatorsCollection) {
-            console.log(userId);
-            if (creator._id !== userId) {
-                addCreatorcard(creator);
             }
-        }
-    }
-
-    setTimeout(() => {
-        localStorage.removeItem("current-user")
-        localStorage.removeItem("creatorsCollection")
-
-    }, 300_000)
+        })
+        .catch(error => {
+            console.log(error);
+        })
 }
 
 
@@ -80,7 +52,6 @@ function setUserdata(data) {
 }
 
 function addCreatorcard(data) {
-    console.log(data);
     const card = document.createElement('div');
     card.classList.add('creator');
     card.setAttribute("id", data._id);
