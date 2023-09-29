@@ -4,28 +4,24 @@ else main()
 function main() {
     const userId = JSON.parse(getLocalStorage("loginState")).userId;
 
-    const userDetails = JSON.parse(getLocalStorage("current-user"))
-    if (!userDetails) {
-        fetchUserData(`/admin/get/userById/${userId}`)
-            .then(response => {
-                //update the credentials
-                const userDetails = response.document;
-                setLocalStorage("current-user", JSON.stringify(userDetails));
 
-                setUserdata(userDetails)
-            })
-            .catch(error => {
-                console.log(error);
-            })
+    fetchUserData(`/admin/get/userById/${userId}`)
+        .then(response => {
+            //update the credentials
+            const userDetails = response.document;
+            setLocalStorage("current-user", JSON.stringify(userDetails));
 
-    }
-    else {
-        setUserdata(userDetails)
-        setUserProfilePageData(userDetails)
-    }
+            setUserdata(userDetails)
+            setUserProfilePageData(userDetails)
+        })
+        .catch(error => {
+            console.log(error);
+        })
+
+
 
     document.getElementById("edit-profile").addEventListener("click", (e) => {
-        setLocalStorage("vp-status", JSON.stringify({status: "edit"}))
+        setLocalStorage("vp-status", JSON.stringify({ status: "edit" }))
         window.location.href = "/admin/redirect/createUserProfile"
     })
 

@@ -3,6 +3,13 @@ else main()
 
 function main() {
     const form = getId("formContact");
+
+    for (let input of document.getElementsByClassName("input")) {
+        input.addEventListener("click", (e) => {
+            e.target.parentElement.querySelector("label").style.display = "none"
+            e.target.parentElement.querySelector("span").style.display = "none"
+        })
+    }
     addeventlistener(form, "submit", (e) => {
         e.preventDefault();
 
@@ -24,6 +31,7 @@ function main() {
             //all inputs are valid
             postFeedbackMessage({username: username, email:email, phone:phone, message: message})
             .then(response => {
+                alert("Email sent successfully")
                 console.log(response);
             })
             .catch(error => {
