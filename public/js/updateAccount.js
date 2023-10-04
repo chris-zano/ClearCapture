@@ -44,7 +44,7 @@ function main() {
 
     }
 
-    
+
 }
 
 function callDefaultUservalues() {
@@ -76,11 +76,11 @@ function hideProfileCards(id) {
             }
         }
     }
-    else if(vpstatus == "edit") {
+    else if (vpstatus == "edit") {
         getId("container_main").style.height = "unset";
         getId("dobgender").style.display = "none";
         getId("ppic").removeAttribute("required");
-        for(let btn of getClass("next-btn")) {
+        for (let btn of getClass("next-btn")) {
             setattribute(btn, "value", "Save")
         }
         for (let element of document.getElementsByTagName("form")) {
@@ -89,21 +89,21 @@ function hideProfileCards(id) {
                 localStorage.removeItem("creatorsCollection")
                 getId("toast_message").innerText = "Changes Saved"
                 getId("toast_message").classList.remove("hidden")
-                setTimeout(()=> {
+                setTimeout(() => {
                     getId("toast_message").classList.add("hidden")
                 }, 1_000)
-                
+
             })
         }
 
         getId("final-next-btn").setAttribute("value", "Done")
 
-        if (!getId("ppic").value) {
-            addeventlistener(getId("profilePic_form"), "submit", (e) =>{
+        addeventlistener(getId("profilePic_form"), "submit", (e) => {
+            if (!getId("ppic").value) {
                 e.preventDefault();
                 window.location.href = "/"
-            })
-        }
+            }
+        })
     }
 }
 
@@ -116,7 +116,7 @@ async function postData(endpoint, bodyObj) {
             },
             body: JSON.stringify(bodyObj)
         })
-        
+
         const res = await req.json();
 
         return res
@@ -175,12 +175,12 @@ function updateSocials() {
     const whatsapp = getId("whatsapp").value;
 
 
-    postData("/admin/update/socials", {userId: userId, instagram: instagram, twitter: twitter, facebook: facebook, tiktok: tiktok, youtube: youtube, whatsapp: whatsapp})
+    postData("/admin/update/socials", { userId: userId, instagram: instagram, twitter: twitter, facebook: facebook, tiktok: tiktok, youtube: youtube, whatsapp: whatsapp })
         .then(res => {
             console.log(res);
         })
         .catch(error => {
             console.log(error);
         })
-        hideProfileCards("pictureprof")
+    hideProfileCards("pictureprof")
 }

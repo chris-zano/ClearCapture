@@ -12,9 +12,11 @@ exports.uploadCollection = (req, res) => {
     for (let photo of req.files) {
         const videoObj = {
             url: `/client/collection/${photo.filename}`,
-            type: photo.mimetype
+            type: photo.originalname.slice(photo.originalname.indexOf(".", -1) + 1),
+            originalname: photo.originalname
         }
         mediaFiles.push(videoObj);
+        console.log(videoObj);
     }
     if (mediaFiles.length > 0) {
         const fileCollection = new FilesCollection(req.body.creatorId, mediaFiles, req.body.passkey)
